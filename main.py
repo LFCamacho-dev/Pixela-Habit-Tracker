@@ -13,8 +13,23 @@ user_params = {
     "notMinor": "yes",
 }
 
-response = requests.post(url=pixela_endpoint, json=user_params)
+# response = requests.post(url=pixela_endpoint, json=user_params)
+# print(response.text)
+
+
+graph_endpoint = f"{pixela_endpoint}/{USERNAME}/graphs"
+
+graph_config = {
+    "id": "coding1",
+    "name": "Commits Graphs",
+    "unit": "commit",
+    "type": "int",
+    "color": "momiji", # black
+}
+headers = {
+    "X-USER-TOKEN": TOKEN
+}
+
+response = requests.post(url=graph_endpoint, json=graph_config, headers=headers)
 print(response.text)
-
-
 
